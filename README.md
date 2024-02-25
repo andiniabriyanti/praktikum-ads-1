@@ -21,7 +21,7 @@ output tampilan pesan menu :
 output tampilan lihat pesanan belanja :
 ![Screenshot 2024-02-25 201829](https://github.com/andiniabriyanti/praktikum-ads-1/assets/144974557/7e7f1b0b-a245-4a0f-a165-28a1e362bd9c)
 
-output tampilan cetak struk belanja belanja :
+output tampilan cetak struk belanja :
 ![Screenshot 2024-02-25 201911](https://github.com/andiniabriyanti/praktikum-ads-1/assets/144974557/e3b91c2a-5d97-4c50-a861-ddbb204b609b)
 
 output tampilan keluar program :
