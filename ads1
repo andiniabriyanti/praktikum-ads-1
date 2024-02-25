@@ -1,0 +1,122 @@
+class KasirRestoran:
+    def _init_(self):
+        self.menu = {
+            "Rendang Daging Sapi": 120000,
+            "Ayam Bakar Madu": 90000,
+            "Sate Padang": 60000,
+            "Jus Jeruk Bali": 35000,
+            "Kopi Luwak": 100000,
+            "Es Campur Special": 45000
+        }
+        self.pesanan = {}
+
+    def tambah_menu(self, nama, harga):
+        if nama not in self.menu:
+            self.menu[nama] = harga
+            print(f"Menu '{nama}' telah ditambahkan dengan harga Rp{harga}")
+        else:
+            print(f"Menu '{nama}' sudah ada dalam daftar.")
+
+    def lihat_menu(self):
+        if self.menu:
+            print("Menu Restoran:")
+            for nama, harga in self.menu.items():
+                print(f"{nama}: Rp{harga}")
+        else:
+            print("Menu restoran kosong")
+
+    def ubah_harga(self, nama, harga_baru):
+        if nama in self.menu:
+            self.menu[nama] = harga_baru
+            print(f"Harga untuk '{nama}' telah diubah menjadi Rp{harga_baru}")
+        else:
+            print(f"'{nama}' tidak ada dalam menu")
+
+    def hapus_menu(self, nama):
+        if nama in self.menu:
+            del self.menu[nama]
+            print(f"Menu '{nama}' telah dihapus dari daftar")
+        else:
+            print(f"'{nama}' tidak ada dalam menu")
+
+    def pesan_menu(self, nama, jumlah):
+        if nama in self.menu:
+            if nama in self.pesanan:
+                self.pesanan[nama] += jumlah
+            else:
+                self.pesanan[nama] = jumlah
+            print(f"{jumlah} porsi '{nama}' telah ditambahkan ke dalam pesanan")
+        else:
+            print(f"'{nama}' tidak ada dalam menu")
+
+    def lihat_pesanan(self):
+        if self.pesanan:
+            print("Pesanan Anda:")
+            for nama, jumlah in self.pesanan.items():
+                harga = self.menu[nama]
+                total_harga = harga * jumlah
+                print(f"{nama}: {jumlah} x Rp{harga} = Rp{total_harga}") 
+
+    def total_belanja(self):
+        total = 0
+        if self.pesanan:
+            for nama, jumlah in self.pesanan.items():
+                total += self.menu[nama] * jumlah
+        return total
+
+    def cetak_struk(self):
+        if self.pesanan:
+            print("======= STRUK BELANJA =======")
+            for nama, jumlah in self.pesanan.items():
+                subtotal = self.menu[nama] * jumlah
+                print(f"{nama} \t {jumlah} \t Rp{subtotal}")
+            print("==============================")
+            print(f"Total Belanja: Rp{self.total_belanja()}")
+        else:
+            print("Pesanan masih kosong")
+
+
+if _name_ == "_main_":
+    kasir = KasirRestoran()
+
+
+    while True:
+        print("-" * 30)
+        print("  MENU KASIR RESTORAN LOLY  ")
+        print("1. Tambah menu")
+        print("2. Lihat menu")
+        print("3. Ubah harga menu")
+        print("4. Hapus menu")
+        print("5. Pesan menu")
+        print("6. Lihat pesanan belanja")
+        print("7. Cetak struk belanja")
+        print("8. Keluar")
+
+        pilihan = input("Pilih menu (1/2/3/4/5/6/7/8): ")
+
+        if pilihan == '1':
+            nama = input("Masukkan nama menu: ")
+            harga = int(input("Masukkan harga menu: "))
+            kasir.tambah_menu(nama, harga)
+        elif pilihan == '2':
+            kasir.lihat_menu()
+        elif pilihan == '3':
+            nama = input("Masukkan nama menu yang ingin diubah harganya: ")
+            harga_baru = int(input("Masukkan harga baru: "))
+            kasir.ubah_harga(nama, harga_baru)
+        elif pilihan == '4':
+            nama = input("Masukkan nama menu yang ingin dihapus: ")
+            kasir.hapus_menu(nama)
+        elif pilihan == '5':
+            nama = input("Masukkan nama menu yang ingin dipesan: ")
+            jumlah = int(input("Masukkan jumlah porsi: "))
+            kasir.pesan_menu(nama, jumlah)
+        elif pilihan == '6':
+            kasir.lihat_pesanan()
+        elif pilihan == '7':
+            kasir.cetak_struk()
+        elif pilihan == '8':
+            print("Terima kasih sudah menggunakan program ini!")
+            break
+        else:
+            print("Pilihan tidak valid. Silakan pilih nomor operasi yang sesuai.")
