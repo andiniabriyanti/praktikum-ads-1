@@ -1,5 +1,5 @@
 class KasirRestoran:
-    def _init_(self):
+    def __init__(self):
         self.menu = {
             "Rendang Daging Sapi": 120000,
             "Ayam Bakar Madu": 90000,
@@ -76,13 +76,13 @@ class KasirRestoran:
             print("Pesanan masih kosong")
 
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     kasir = KasirRestoran()
-
 
     while True:
         print("-" * 30)
         print("  MENU KASIR RESTORAN LOLY  ")
+        print("-" * 30)
         print("1. Tambah menu")
         print("2. Lihat menu")
         print("3. Ubah harga menu")
@@ -119,4 +119,4 @@ if _name_ == "_main_":
             print("Terima kasih sudah menggunakan program ini!")
             break
         else:
-            print("Pilihan tidak valid. Silakan pilih nomor operasi yang sesuai.")
+            print("Pilihan tidak valid. Silakan pilih nomor menu yang sesuai.")
